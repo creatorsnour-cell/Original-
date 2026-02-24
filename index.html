@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Nour Spins - Web3</title>
+    <style>
+        body { background: #0f0f0f; color: white; text-align: center; font-family: 'Segoe UI', sans-serif; }
+        .container { margin-top: 50px; }
+        .spin-button { 
+            width: 200px; height: 200px; border-radius: 50%; border: 8px solid #ffd700;
+            background: radial-gradient(circle, #ffeb3b, #fbc02d);
+            font-size: 24px; font-weight: bold; cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            transition: transform 0.1s;
+        }
+        .spin-button:active { transform: scale(0.95); }
+        h1 { color: #ffd700; font-size: 2.5em; }
+        #balance { font-size: 1.5em; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>SPIN & WIN</h1>
+        <div id="balance">Solde : <span id="score">0</span> 🪙</div>
+        <button class="spin-button" id="btn">SPIN !</button>
+        <p style="margin-top: 30px; color: #888;">Connecté avec WhatsApp</p>
+    </div>
+
+    <script>
+        let score = localStorage.getItem('user_score') || 0;
+        const scoreDisplay = document.getElementById('score');
+        const btn = document.getElementById('btn');
+
+        scoreDisplay.innerText = score;
+
+        btn.onclick = () => {
+            score++;
+            scoreDisplay.innerText = score;
+            localStorage.setItem('user_score', score);
+        };
+    </script>
+</body>
+</html>
